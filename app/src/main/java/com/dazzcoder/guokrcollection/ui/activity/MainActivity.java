@@ -7,12 +7,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.dazzcoder.guokrcollection.R;
 import com.dazzcoder.guokrcollection.adapter.ArticleListAdapter;
@@ -86,8 +88,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
     }
 
@@ -115,6 +117,8 @@ public class MainActivity extends AppCompatActivity
         mRecyclerView.setOnScrollListener(scrollListener);
 
         footerView = LayoutInflater.from(this).inflate(R.layout.footer_view, null, false);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        footerView.setLayoutParams(params);
         footerView.setVisibility(View.GONE);
         mAdapter.setFooterView(footerView);
         mAdapter.setOnItemClickListener(this);
@@ -124,6 +128,7 @@ public class MainActivity extends AppCompatActivity
                 mSwipeRefresh.setRefreshing(true);
             }
         });
+         mAdapter.setHeaderView(bannerView);
     }
 
     private void refresh(){
@@ -181,7 +186,7 @@ public class MainActivity extends AppCompatActivity
                     isRefreshing = false;
                     break;
                 case GET_HEADER:
-                    if (mAdapter.getHeaderView() == null) mAdapter.setHeaderView(bannerView);
+
                     bannerView.addAllData(resultList);
                     break;
                 case UPDATE_ARTICLE:

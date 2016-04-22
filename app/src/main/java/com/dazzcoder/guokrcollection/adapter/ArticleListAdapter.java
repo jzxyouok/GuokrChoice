@@ -85,17 +85,23 @@ public class ArticleListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         notifyItemInserted(0);
     }
 
-    public View getHeaderView() {
-        return mHeaderView;
+    public void removeHeaderView() {
+        if (mHeaderView!=null){
+            notifyItemRemoved(0);
+        }
     }
+
+
 
     public void setFooterView(View view) {
         this.mFooterView = view;
         notifyItemInserted(mArticleList.size() - 1);
     }
 
-    public View getFooterView() {
-        return mFooterView;
+    public void removeFooterView() {
+        if (mFooterView != null){
+            notifyItemRemoved(mArticleList.size());
+        }
     }
 
     @Override
