@@ -37,6 +37,7 @@ public class ContainerActivity extends AppCompatActivity {
             Fragment fragment = new ArticleFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("id", id);
+
             fragment.setArguments(bundle);
             fragments.add(fragment);
         }

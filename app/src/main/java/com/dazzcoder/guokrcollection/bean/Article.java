@@ -4,6 +4,16 @@ public class Article {
     private String title;
     private String headline_img;
     private String summary;
+    private int inFavor;
+
+    public int getInFavor() {
+        return inFavor;
+    }
+
+    public void setInFavor(int inFavor) {
+        this.inFavor = inFavor;
+    }
+
     private int id;
     private int date_picked;
 

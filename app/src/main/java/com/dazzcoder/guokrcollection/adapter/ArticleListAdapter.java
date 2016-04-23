@@ -95,6 +95,7 @@ public class ArticleListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public void setFooterView(View view) {
         this.mFooterView = view;
+
         notifyItemInserted(mArticleList.size() - 1);
     }
 
